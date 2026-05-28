@@ -107,7 +107,6 @@ const Navbar = () => {
             <button
               className="hm-theme-toggle"
               onClick={() => toggleTheme()}
-              title={isLight ? 'Switch to dark mode' : 'Switch to light mode'}
               style={{ marginLeft: 4 }}
             >
               {isLight ? (

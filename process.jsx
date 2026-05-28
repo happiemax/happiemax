@@ -248,7 +248,6 @@ const CTABanner = () => {
                     href={`https://wa.me/${num}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    title="Chat on WhatsApp"
                     style={{
                       display: 'inline-flex', alignItems: 'center', gap: 5,
                       fontSize: 12, fontWeight: 600, padding: '4px 10px',

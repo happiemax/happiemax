@@ -117,7 +117,6 @@ const FooterSection = () => {
               {SOCIALS.map((s) => (
                 <a
                   key={s.name} href={s.href}
-                  title={s.name}
                   className="hm-social-icon"
                   style={{
                     width: 38, height: 38, borderRadius: 10,
