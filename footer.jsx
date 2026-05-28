@@ -92,7 +92,7 @@ const FooterSection = () => {
 
             {/* Contact numbers */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 20 }}>
-              {['+91 96779 76609', '+91 88700 42498'].map((num) => (
+              {['+91 96984 58438', '+91 96779 76609', '+91 88700 42498'].map((num) => (
                 <a
                   key={num}
                   href={`tel:${num.replace(/\s/g, '')}`}

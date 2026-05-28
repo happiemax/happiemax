@@ -225,6 +225,7 @@ const CTABanner = () => {
               borderTop: '1px solid rgba(255,255,255,.07)',
             }}>
               {[
+                { num: '+919698458438', display: '+91 96984 58438' },
                 { num: '+919677976609', display: '+91 96779 76609' },
                 { num: '+918870042498', display: '+91 88700 42498' },
               ].map(({ num, display }) => (

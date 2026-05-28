@@ -9,7 +9,7 @@ const TESTIMONIALS = [
     name: "Kumudha Hospital",
     role: "Healthcare Operations",
     project: 'Hospital Management System',
-    projectUrl: 'https://kumudha-hms.vercel.app/',
+    projectUrl: null,
     accent: '#2563EB',
     initials: 'KH',
   },
