@@ -8,7 +8,7 @@ const TESTIMONIALS = [
     quote: "Happie Max completely transformed how we run our hospital. Patient records, appointment scheduling, billing — everything is now automated and running seamlessly. Our staff spends time on patients, not paperwork.",
     name: "Kumudha Hospital",
     role: "Healthcare Operations",
-    project: 'Hospital Management System',
+    project: 'HMS Platform',
     projectUrl: null,
     accent: '#2563EB',
     initials: 'KH',
