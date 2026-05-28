@@ -36,6 +36,12 @@ const SlotWord = () => {
       position: 'relative', display: 'inline-block',
       overflow: 'hidden', verticalAlign: 'bottom',
     }}>
+      {/* Hidden spacer — always holds 'Engineer' width so ' It.' never shifts */}
+      <span className="gradient-text" style={{
+        visibility: 'hidden', userSelect: 'none', display: 'block', whiteSpace: 'nowrap',
+      }}>Engineer</span>
+
+      {/* Outgoing word */}
       {tick > 0 && (
         <span
           key={`out-${tick}`}
@@ -47,11 +53,13 @@ const SlotWord = () => {
           }}
         >{SLOT_VERBS[prevIdx].word}</span>
       )}
+
+      {/* Incoming word */}
       <span
         key={`in-${tick}`}
         className="gradient-text"
         style={{
-          display: 'block',
+          position: 'absolute', top: 0, left: 0,
           animation: tick > 0 ? 'hmSlotIn .42s cubic-bezier(.4,0,.2,1) forwards' : 'none',
           whiteSpace: 'nowrap',
         }}
