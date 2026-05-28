@@ -167,7 +167,7 @@ const TechLogo = ({ tech, size = 34, isLight }) => {
 };
 
 /* ── Single tile ────────────────────────────── */
-const TechTile = ({ tech, dim, index, vis, isLight }) => {
+const TechTile = ({ tech, index, vis, isLight }) => {
   const [hov, setHov] = React.useState(false);
 
   return (
@@ -186,13 +186,12 @@ const TechTile = ({ tech, dim, index, vis, isLight }) => {
         border: `1px solid ${hov ? tech.color + '55' : (isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)')}`,
         boxShadow: hov ? `0 8px 30px ${tech.color}26` : 'none',
         cursor: 'default',
-        opacity: vis ? (dim ? (isLight ? 0.28 : 0.22) : 1) : 0,
-        filter: dim ? 'grayscale(1)' : 'none',
+        opacity: vis ? 1 : 0,
         transform: vis
-          ? (hov ? 'translateY(-5px) scale(1.03)' : (dim ? 'scale(0.97)' : 'translateY(0)'))
+          ? (hov ? 'translateY(-5px) scale(1.03)' : 'translateY(0)')
           : 'translateY(16px)',
-        transition: 'opacity .4s ease, filter .4s ease, transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s, border-color .35s, background .35s',
-        transitionDelay: vis ? `${index * 0.035}s` : '0s',
+        transition: 'opacity .4s ease, transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s, border-color .35s, background .35s',
+        transitionDelay: vis ? `${index * 0.04}s` : '0s',
       }}
     >
       <div style={{
@@ -215,6 +214,9 @@ const TechTile = ({ tech, dim, index, vis, isLight }) => {
 const TechStackSection = () => {
   const [active, setActive] = React.useState('all');
   const [spot, setSpot] = React.useState(false);
+  const visibleTechs = active === 'all'
+    ? TECHS
+    : TECHS.filter(t => t.cat === active);
   const stageRef = React.useRef(null);
   const [gridRef, vis] = useScrollReveal();
   const theme = useTheme();
@@ -305,14 +307,13 @@ const TechStackSection = () => {
               gap: 12,
             }}
           >
-            {TECHS.map((tech, i) => (
+            {visibleTechs.map((tech, i) => (
               <TechTile
-                key={tech.name}
+                key={`${active}-${tech.name}`}
                 tech={tech}
                 index={i}
                 vis={vis}
                 isLight={isLight}
-                dim={active !== 'all' && tech.cat !== active}
               />
             ))}
           </div>
