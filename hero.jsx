@@ -3,6 +3,52 @@
    Uses React state for entrance animations (no opacity:0 fragility)
    ═══════════════════════════════════════════════════ */
 
+/* ── Slot Machine Word ──────────────────────── */
+const SLOT_VERBS = ['Engineer', 'Scale', 'Launch', 'Ship'];
+
+const SlotWord = () => {
+  const [idx, setIdx] = React.useState(0);
+  const [tick, setTick] = React.useState(0);
+
+  React.useEffect(() => {
+    const id = setInterval(() => {
+      setIdx(i => (i + 1) % SLOT_VERBS.length);
+      setTick(t => t + 1);
+    }, 2500);
+    return () => clearInterval(id);
+  }, []);
+
+  const prevIdx = ((idx - 1) + SLOT_VERBS.length) % SLOT_VERBS.length;
+
+  return (
+    <span style={{
+      position: 'relative', display: 'inline-block',
+      overflow: 'hidden', verticalAlign: 'bottom',
+    }}>
+      {tick > 0 && (
+        <span
+          key={`out-${tick}`}
+          className="gradient-text"
+          style={{
+            position: 'absolute', top: 0, left: 0,
+            animation: 'hmSlotOut .42s cubic-bezier(.4,0,.2,1) forwards',
+            whiteSpace: 'nowrap',
+          }}
+        >{SLOT_VERBS[prevIdx]}</span>
+      )}
+      <span
+        key={`in-${tick}`}
+        className="gradient-text"
+        style={{
+          display: 'block',
+          animation: tick > 0 ? 'hmSlotIn .42s cubic-bezier(.4,0,.2,1) forwards' : 'none',
+          whiteSpace: 'nowrap',
+        }}
+      >{SLOT_VERBS[idx]}</span>
+    </span>
+  );
+};
+
 /* ── AI Core Visual ─────────────────────────── */
 const AICoreVisual = () => {
   const [mouse, setMouse] = React.useState({ x: 0, y: 0 });
@@ -136,7 +182,7 @@ const HeroSection = () => {
             }}>
               You Dream It.
               <br />
-              <span className="gradient-text">We Engineer It.</span>
+              <span className="gradient-text">We </span><SlotWord /><span className="gradient-text"> It.</span>
             </h1>
           </FadeIn>
 
@@ -188,6 +234,14 @@ const HeroSection = () => {
       </div>
 
       <style>{`
+        @keyframes hmSlotOut {
+          from { transform: translateY(0);      opacity: 1; }
+          to   { transform: translateY(-115%);  opacity: 0; }
+        }
+        @keyframes hmSlotIn {
+          from { transform: translateY(115%);   opacity: 0; }
+          to   { transform: translateY(0);      opacity: 1; }
+        }
         @media (max-width: 768px) {
           .hm-hero-section {
             padding-bottom: 160px !important;
