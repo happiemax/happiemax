@@ -54,6 +54,9 @@ const TransformCard = ({ data, index }) => {
   const { pos, hovered, setHovered, onMove } = useMouseGlow(cardRef);
   const theme = useTheme();
   const isLight = theme === 'light';
+  const isTouch = React.useMemo(
+    () => window.matchMedia('(hover: none) and (pointer: coarse)').matches, []
+  );
 
   const accentColor = flipped ? data.accentAfter : data.accent;
 
@@ -75,19 +78,20 @@ const TransformCard = ({ data, index }) => {
     <div
       ref={(el) => { cardRef.current = el; ref.current = el; }}
       className={`hm-reveal ${vis ? 'visible' : ''}`}
-      onMouseMove={onMove}
-      onMouseEnter={() => { setHovered(true); setFlipped(true); }}
-      onMouseLeave={() => { setHovered(false); setFlipped(false); }}
+      onMouseMove={isTouch ? undefined : onMove}
+      onMouseEnter={isTouch ? undefined : () => { setHovered(true); setFlipped(true); }}
+      onMouseLeave={isTouch ? undefined : () => { setHovered(false); setFlipped(false); }}
+      onClick={isTouch ? () => setFlipped(f => !f) : undefined}
       style={{
         position: 'relative',
         borderRadius: 20,
         overflow: 'hidden',
-        cursor: 'default',
+        cursor: isTouch ? 'pointer' : 'default',
         minHeight: 280,
         background: cardBg,
         border: cardBorder,
         transition: 'all .5s cubic-bezier(.4,0,.2,1)',
-        transform: hovered ? 'translateY(-6px) scale(1.01)' : 'translateY(0) scale(1)',
+        transform: (isTouch ? flipped : hovered) ? 'translateY(-6px) scale(1.01)' : 'translateY(0) scale(1)',
         boxShadow: cardShadow,
         transitionDelay: `${index * 0.08}s`,
         backdropFilter: isLight ? 'blur(12px)' : 'none',
@@ -182,7 +186,7 @@ const TransformCard = ({ data, index }) => {
           color: flipped ? data.accentAfter : 'var(--hm-text-3)',
           transition: 'all .3s',
         }}>
-          <span>{flipped ? 'This is what we do' : 'Hover to see the outcome'}</span>
+          <span>{flipped ? 'This is what we do' : (isTouch ? 'Tap to see the outcome' : 'Hover to see the outcome')}</span>
           <HMIcon name="arrowRight" size={14} />
         </div>
       </div>

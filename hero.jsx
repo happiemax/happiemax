@@ -106,7 +106,7 @@ const FadeIn = ({ children, delay = 0, style = {} }) => {
 /* ── Hero Section ───────────────────────────── */
 const HeroSection = () => {
   return (
-    <section id="home" style={{
+    <section id="home" className="hm-hero-section" style={{
       position: 'relative', minHeight: '85vh',
       display: 'flex', alignItems: 'center',
       overflow: 'hidden', padding: '90px 24px 40px',
@@ -189,6 +189,9 @@ const HeroSection = () => {
 
       <style>{`
         @media (max-width: 768px) {
+          .hm-hero-section {
+            padding-bottom: 120px !important;
+          }
           .hm-hero-inner {
             padding: 0 !important;
             gap: 28px !important;
