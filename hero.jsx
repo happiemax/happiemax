@@ -4,18 +4,29 @@
    ═══════════════════════════════════════════════════ */
 
 /* ── Slot Machine Word ──────────────────────── */
-const SLOT_VERBS = ['Engineer', 'Scale', 'Launch', 'Ship'];
+const SLOT_VERBS = [
+  { word: 'Engineer', hold: 3800 },
+  { word: 'Scale',    hold: 1000 },
+  { word: 'Launch',   hold: 1000 },
+  { word: 'Ship',     hold: 1000 },
+];
 
 const SlotWord = () => {
   const [idx, setIdx] = React.useState(0);
   const [tick, setTick] = React.useState(0);
+  const timerRef = React.useRef(null);
 
   React.useEffect(() => {
-    const id = setInterval(() => {
-      setIdx(i => (i + 1) % SLOT_VERBS.length);
-      setTick(t => t + 1);
-    }, 2500);
-    return () => clearInterval(id);
+    const cycle = (currentIdx) => {
+      timerRef.current = setTimeout(() => {
+        const nextIdx = (currentIdx + 1) % SLOT_VERBS.length;
+        setIdx(nextIdx);
+        setTick(t => t + 1);
+        cycle(nextIdx);
+      }, SLOT_VERBS[currentIdx].hold);
+    };
+    cycle(0);
+    return () => clearTimeout(timerRef.current);
   }, []);
 
   const prevIdx = ((idx - 1) + SLOT_VERBS.length) % SLOT_VERBS.length;
@@ -34,7 +45,7 @@ const SlotWord = () => {
             animation: 'hmSlotOut .42s cubic-bezier(.4,0,.2,1) forwards',
             whiteSpace: 'nowrap',
           }}
-        >{SLOT_VERBS[prevIdx]}</span>
+        >{SLOT_VERBS[prevIdx].word}</span>
       )}
       <span
         key={`in-${tick}`}
@@ -44,7 +55,7 @@ const SlotWord = () => {
           animation: tick > 0 ? 'hmSlotIn .42s cubic-bezier(.4,0,.2,1) forwards' : 'none',
           whiteSpace: 'nowrap',
         }}
-      >{SLOT_VERBS[idx]}</span>
+      >{SLOT_VERBS[idx].word}</span>
     </span>
   );
 };
