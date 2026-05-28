@@ -14,25 +14,42 @@ const TS_CATS = [
 ];
 
 const TECHS = [
+  // AI & ML
   { name: 'Python',      cat: 'ai',       color: '#3776AB', mono: 'Py' },
   { name: 'TensorFlow',  cat: 'ai',       color: '#FF6F00', mono: 'TF' },
   { name: 'PyTorch',     cat: 'ai',       color: '#EE4C2C', mono: 'Pt' },
   { name: 'OpenAI',      cat: 'ai',       color: '#10A37F', mono: 'AI' },
+  { name: 'LangChain',   cat: 'ai',       color: '#1C3C3C', mono: 'LC' },
+  { name: 'Hugging Face',cat: 'ai',       color: '#FFD21E', mono: 'HF' },
+  // Frontend
   { name: 'React',       cat: 'frontend', color: '#61DAFB', logo: 'react' },
   { name: 'Next.js',     cat: 'frontend', color: '#94A3B8', logo: 'next' },
+  { name: 'Angular',     cat: 'frontend', color: '#DD0031', mono: 'Ng' },
+  { name: 'Vue.js',      cat: 'frontend', color: '#4FC08D', mono: 'Vue' },
   { name: 'TypeScript',  cat: 'frontend', color: '#3178C6', logo: 'ts' },
   { name: 'JavaScript',  cat: 'frontend', color: '#F7DF1E', logo: 'js' },
   { name: 'Tailwind',    cat: 'frontend', color: '#38BDF8', logo: 'tailwind' },
   { name: 'Flutter',     cat: 'frontend', color: '#54C5F8', logo: 'flutter' },
+  // Backend
   { name: 'Node.js',     cat: 'backend',  color: '#539E43', logo: 'node' },
+  { name: 'Java',        cat: 'backend',  color: '#ED8B00', mono: 'Jv' },
+  { name: '.NET',        cat: 'backend',  color: '#512BD4', mono: '.NET' },
+  { name: 'PHP',         cat: 'backend',  color: '#777BB4', mono: 'PHP' },
   { name: 'GraphQL',     cat: 'backend',  color: '#E10098', logo: 'graphql' },
   { name: 'FastAPI',     cat: 'backend',  color: '#009688', mono: 'Fa' },
+  // Cloud & DevOps
   { name: 'AWS',         cat: 'cloud',    color: '#FF9900', logo: 'aws' },
-  { name: 'Vercel',      cat: 'cloud',    color: '#94A3B8', logo: 'vercel' },
+  { name: 'Azure',       cat: 'cloud',    color: '#0078D4', mono: 'Az' },
+  { name: 'GCP',         cat: 'cloud',    color: '#4285F4', mono: 'GCP' },
   { name: 'Docker',      cat: 'cloud',    color: '#2496ED', logo: 'docker' },
+  { name: 'Kubernetes',  cat: 'cloud',    color: '#326CE5', mono: 'K8s' },
+  { name: 'Vercel',      cat: 'cloud',    color: '#94A3B8', logo: 'vercel' },
+  // Data
   { name: 'PostgreSQL',  cat: 'data',     color: '#4169E1', mono: 'Pg' },
   { name: 'MongoDB',     cat: 'data',     color: '#47A248', logo: 'mongo' },
   { name: 'Firebase',    cat: 'data',     color: '#FFA000', logo: 'firebase' },
+  { name: 'Redis',       cat: 'data',     color: '#DC382D', mono: 'Rd' },
+  { name: 'Supabase',    cat: 'data',     color: '#3ECF8E', mono: 'SB' },
 ];
 
 /* ── Brand logos (hand-built SVG) ───────────── */
