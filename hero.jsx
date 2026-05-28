@@ -218,21 +218,24 @@ const HeroSection = () => {
 
       <FadeIn delay={1} style={{
         position: 'absolute', bottom: 20, left: '50%', transform: 'translateX(-50%)',
-        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10,
-        animation: 'hmScrollNudge 2.4s ease-in-out infinite',
       }}>
-        <span style={{ fontSize: 11, color: 'var(--hm-text-3)', letterSpacing: '1px', textTransform: 'uppercase' }}>Scroll to explore</span>
         <div style={{
-          position: 'relative', width: 1, height: 32,
-          background: 'linear-gradient(to bottom, var(--hm-text-3), transparent)',
+          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10,
+          animation: 'hmScrollNudge 2.4s ease-in-out infinite',
         }}>
+          <span style={{ fontSize: 11, color: 'var(--hm-text-3)', letterSpacing: '1px', textTransform: 'uppercase' }}>Scroll to explore</span>
           <div style={{
-            position: 'absolute', top: 0, left: -1.5,
-            width: 4, height: 4, borderRadius: '50%',
-            background: 'var(--hm-blue)',
-            boxShadow: '0 0 8px var(--hm-blue)',
-            animation: 'hmScrollDot 1.8s cubic-bezier(.4,0,.2,1) infinite',
-          }}></div>
+            position: 'relative', width: 1, height: 32,
+            background: 'linear-gradient(to bottom, var(--hm-text-3), transparent)',
+          }}>
+            <div style={{
+              position: 'absolute', top: 0, left: -1.5,
+              width: 4, height: 4, borderRadius: '50%',
+              background: 'var(--hm-blue)',
+              boxShadow: '0 0 8px var(--hm-blue)',
+              animation: 'hmScrollDot 1.8s cubic-bezier(.4,0,.2,1) infinite',
+            }}></div>
+          </div>
         </div>
       </FadeIn>
     </section>
