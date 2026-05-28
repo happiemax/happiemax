@@ -26,7 +26,7 @@ const TESTIMONIALS = [
     quote: "The money management app they shipped for Android is polished and genuinely useful. The AI-powered spending insights set it apart from everything else in the market — users keep coming back.",
     name: "Brush Expense",
     role: "FinTech / Mobile",
-    project: 'Android Money Management App',
+    project: 'Money Manager App',
     projectUrl: null,
     accent: '#10B981',
     initials: 'BE',
