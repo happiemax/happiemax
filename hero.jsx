@@ -190,15 +190,15 @@ const HeroSection = () => {
       <style>{`
         @media (max-width: 768px) {
           .hm-hero-section {
-            padding-bottom: 120px !important;
+            padding-bottom: 160px !important;
           }
           .hm-hero-inner {
             padding: 0 !important;
             gap: 28px !important;
           }
           .hm-ai-core {
-            width: clamp(180px, 65vw, 260px) !important;
-            height: clamp(180px, 65vw, 260px) !important;
+            width: clamp(150px, 48vw, 200px) !important;
+            height: clamp(150px, 48vw, 200px) !important;
           }
           .hm-hero-text {
             text-align: center;
