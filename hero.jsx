@@ -5,10 +5,10 @@
 
 /* ── Slot Machine Word ──────────────────────── */
 const SLOT_VERBS = [
-  { word: 'Engineer', hold: 3800 },
-  { word: 'Scale',    hold: 1000 },
-  { word: 'Launch',   hold: 1000 },
-  { word: 'Ship',     hold: 1000 },
+  { word: 'Engineer It.', hold: 3800 },
+  { word: 'Scale It.',    hold: 1000 },
+  { word: 'Launch It.',   hold: 1000 },
+  { word: 'Ship It.',     hold: 1000 },
 ];
 
 const SlotWord = () => {
@@ -36,10 +36,10 @@ const SlotWord = () => {
       position: 'relative', display: 'inline-block',
       overflow: 'hidden', verticalAlign: 'bottom',
     }}>
-      {/* Hidden spacer — always holds 'Engineer' width so ' It.' never shifts */}
+      {/* Hidden spacer — always holds 'Engineer It.' width */}
       <span className="gradient-text" style={{
         visibility: 'hidden', userSelect: 'none', display: 'block', whiteSpace: 'nowrap',
-      }}>Engineer</span>
+      }}>Engineer It.</span>
 
       {/* Outgoing word */}
       {tick > 0 && (
@@ -201,7 +201,7 @@ const HeroSection = () => {
             }}>
               You Dream It.
               <br />
-              <span className="gradient-text">We </span><SlotWord /><span className="gradient-text"> It.</span>
+              <span className="gradient-text">We </span><SlotWord />
             </h1>
           </FadeIn>
 
