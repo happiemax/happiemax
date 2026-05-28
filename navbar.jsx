@@ -152,52 +152,81 @@ const Navbar = () => {
       {/* Mobile Drawer */}
       <div className="hm-mobile-drawer" style={{
         position: 'fixed', top: 0, right: 0, bottom: 0,
-        width: 300, maxWidth: '85vw',
+        width: 280, maxWidth: '88vw',
         zIndex: 1001,
-        background: isLight ? 'rgba(248,250,253,.97)' : 'rgba(9,13,22,.96)',
+        background: isLight ? '#F8FAFD' : 'rgba(9,13,22,.98)',
         backdropFilter: 'blur(24px)',
         WebkitBackdropFilter: 'blur(24px)',
-        borderLeft: `1px solid ${isLight ? 'rgba(0,0,0,.06)' : 'rgba(255,255,255,.06)'}`,
+        borderLeft: `1px solid ${isLight ? 'rgba(0,0,0,.08)' : 'rgba(255,255,255,.06)'}`,
         transform: mobileOpen ? 'translateX(0)' : 'translateX(100%)',
         transition: 'transform .35s cubic-bezier(.4,0,.2,1)',
         display: 'flex', flexDirection: 'column',
-        padding: '80px 32px 40px',
-        gap: 8,
       }}>
-        <button
-          onClick={() => setMobileOpen(false)}
-          style={{
-            position: 'absolute', top: 20, right: 20,
-            background: 'none', border: 'none', color: '#F1F5F9',
-            cursor: 'pointer',
-          }}
-        >
-          <HMIcon name="x" size={24} />
-        </button>
+        {/* Drawer header */}
+        <div style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          padding: '18px 24px',
+          borderBottom: `1px solid ${isLight ? 'rgba(0,0,0,.07)' : 'rgba(255,255,255,.05)'}`,
+        }}>
+          <a href="#home" onClick={() => setMobileOpen(false)} style={{
+            display: 'flex', alignItems: 'center', gap: 9, textDecoration: 'none', color: 'inherit',
+          }}>
+            <img src="logo-icon.png" alt="Happie Max" style={{ width: 30, height: 30, borderRadius: 8, objectFit: 'cover' }} />
+            <span className="font-heading" style={{ fontSize: 17, fontWeight: 800, letterSpacing: '-0.02em' }}>
+              <span style={{ color: brandNavy }}>Happie</span>{' '}
+              <span style={{ color: brandCyan }}>Max</span>
+            </span>
+          </a>
+          <button onClick={() => setMobileOpen(false)} style={{
+            width: 32, height: 32, borderRadius: 8, cursor: 'pointer',
+            background: isLight ? 'rgba(0,0,0,.05)' : 'rgba(255,255,255,.07)',
+            border: `1px solid ${isLight ? 'rgba(0,0,0,.08)' : 'rgba(255,255,255,.08)'}`,
+            color: 'var(--hm-text)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <HMIcon name="x" size={16} />
+          </button>
+        </div>
 
-        {NAV_LINKS.map((l) => (
+        {/* Nav links */}
+        <div style={{ flex: 1, padding: '4px 24px', display: 'flex', flexDirection: 'column' }}>
+          {NAV_LINKS.map((l) => (
+            <a
+              key={l.label} href={l.href}
+              onClick={() => setMobileOpen(false)}
+              style={{
+                color: 'var(--hm-text)', textDecoration: 'none',
+                fontSize: 16, fontWeight: 600, fontFamily: 'Space Grotesk, sans-serif',
+                padding: '16px 0',
+                borderBottom: `1px solid ${isLight ? 'rgba(0,0,0,.06)' : 'rgba(255,255,255,.05)'}`,
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                transition: 'color .2s',
+              }}
+              onTouchStart={(e) => { e.currentTarget.style.color = '#2563EB'; }}
+              onTouchEnd={(e) => { e.currentTarget.style.color = 'var(--hm-text)'; }}
+            >
+              {l.label}
+              <HMIcon name="chevronRight" size={15} />
+            </a>
+          ))}
+        </div>
+
+        {/* CTA button */}
+        <div style={{ padding: '20px 24px 36px' }}>
           <a
-            key={l.label} href={l.href}
+            href="#contact"
             onClick={() => setMobileOpen(false)}
+            className="hm-btn-primary"
             style={{
-              color: 'var(--hm-text)', textDecoration: 'none',
-              fontSize: 18, fontWeight: 600, fontFamily: 'Space Grotesk, sans-serif',
-              padding: '14px 0',
-              borderBottom: '1px solid rgba(255,255,255,.06)',
-              transition: 'color .2s',
+              width: '100%', justifyContent: 'center',
+              padding: '13px 20px', fontSize: 14,
+              whiteSpace: 'nowrap', boxSizing: 'border-box',
             }}
-          >{l.label}</a>
-        ))}
-
-        <a
-          href="#contact"
-          onClick={() => setMobileOpen(false)}
-          className="hm-btn-primary"
-          style={{ marginTop: 24, justifyContent: 'center' }}
-        >
-          Elevate Your Business
-          <HMIcon name="arrowUpRight" size={15} strokeWidth={2.5} />
-        </a>
+          >
+            Elevate Your Business
+            <HMIcon name="arrowUpRight" size={14} strokeWidth={2.5} />
+          </a>
+        </div>
       </div>
 
       {/* Responsive breakpoint styles */}
