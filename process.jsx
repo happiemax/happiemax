@@ -25,7 +25,7 @@ const STEPS = [
   },
 ];
 
-const ProcessStep = ({ step, index, isLast }) => {
+const ProcessStep = ({ step, index }) => {
   const [ref, vis] = useScrollReveal();
 
   return (
@@ -111,7 +111,7 @@ const ProcessSection = () => {
 /* ── Stats Bar ──────────────────────────────── */
 const STATS = [
   { value: 5, suffix: '+', label: 'Projects Delivered' },
-  { value: 98, suffix: '%', label: 'Client Satisfaction' },
+  { value: 100, suffix: '%', label: 'Client Satisfaction' },
   { value: 100, suffix: '+', label: 'Technologies Mastered' },
   { value: 2, suffix: 'x', label: 'Faster Time to Launch' },
 ];

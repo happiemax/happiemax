@@ -225,12 +225,14 @@ const HeroSection = () => {
           </FadeIn>
         </div>
 
-        <FadeIn delay={0.3} style={{
-          flex: '0 1 440px',
-          display: 'flex', justifyContent: 'center', alignItems: 'center',
-        }}>
-          <AICoreVisual />
-        </FadeIn>
+        <div className="hm-hero-globe-wrap">
+          <FadeIn delay={0.3} style={{
+            flex: '0 1 440px',
+            display: 'flex', justifyContent: 'center', alignItems: 'center',
+          }}>
+            <AICoreVisual />
+          </FadeIn>
+        </div>
       </div>
 
       <style>{`
@@ -244,7 +246,10 @@ const HeroSection = () => {
         }
         @media (max-width: 768px) {
           .hm-hero-section {
-            padding-bottom: 160px !important;
+            padding-bottom: 80px !important;
+          }
+          .hm-hero-globe-wrap {
+            display: none;
           }
           .hm-hero-inner {
             padding: 0 !important;
