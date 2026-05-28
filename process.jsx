@@ -110,7 +110,7 @@ const ProcessSection = () => {
 
 /* ── Stats Bar ──────────────────────────────── */
 const STATS = [
-  { value: 50, suffix: '+', label: 'Projects Delivered' },
+  { value: 5, suffix: '+', label: 'Projects Delivered' },
   { value: 98, suffix: '%', label: 'Client Satisfaction' },
   { value: 100, suffix: '+', label: 'Technologies Mastered' },
   { value: 2, suffix: 'x', label: 'Faster Time to Launch' },
@@ -183,8 +183,8 @@ const CTABanner = () => {
             filter: 'blur(40px)', pointerEvents: 'none',
           }}></div>
 
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <div className="hm-badge" style={{ marginBottom: 24 }}>
+          <div style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
+            <div className="hm-badge" style={{ marginBottom: 24, margin: '0 auto 24px', display: 'inline-flex' }}>
               <HMIcon name="zap" size={14} />
               Ready to Begin?
             </div>
