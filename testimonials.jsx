@@ -12,6 +12,7 @@ const TESTIMONIALS = [
     projectUrl: null,
     accent: '#2563EB',
     initials: 'KH',
+    tags: ['Patient Records', 'Billing Automation', 'Appointment Scheduling'],
   },
   {
     quote: "We needed a travel booking platform that handled complex multi-city itineraries and real-time pricing without breaking. Happie Max built exactly that — clean, fast, and our customers love it.",
@@ -21,6 +22,7 @@ const TESTIMONIALS = [
     projectUrl: null,
     accent: '#7C3AED',
     initials: 'TC',
+    tags: ['Multi-city Itineraries', 'Real-time Pricing', 'Payment Integration'],
   },
   {
     quote: "The money management app they shipped for Android is polished and genuinely useful. The AI-powered spending insights set it apart from everything else in the market — users keep coming back.",
@@ -30,6 +32,7 @@ const TESTIMONIALS = [
     projectUrl: null,
     accent: '#10B981',
     initials: 'BE',
+    tags: ['AI Spending Insights', 'Budget Tracking', 'Mobile App'],
   },
 ];
 
@@ -80,6 +83,22 @@ const TestimonialCard = ({ data, index }) => {
       }}>
         "{data.quote}"
       </p>
+
+      {/* Feature tags */}
+      {data.tags && (
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7 }}>
+          {data.tags.map((tag) => (
+            <span key={tag} style={{
+              fontSize: 11, fontWeight: 600,
+              padding: '4px 10px', borderRadius: 6,
+              background: `${data.accent}0E`,
+              border: `1px solid ${data.accent}22`,
+              color: data.accent,
+              letterSpacing: '0.02em',
+            }}>{tag}</span>
+          ))}
+        </div>
+      )}
 
       {/* Divider */}
       <div style={{
