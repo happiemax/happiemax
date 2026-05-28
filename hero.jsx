@@ -37,7 +37,7 @@ const AICoreVisual = () => {
     })), []);
 
   return (
-    <div ref={containerRef} style={{
+    <div ref={containerRef} className="hm-ai-core" style={{
       position: 'relative',
       width: 'clamp(260px, 38vw, 440px)',
       height: 'clamp(260px, 38vw, 440px)',
@@ -114,14 +114,14 @@ const HeroSection = () => {
       <div style={{ position: 'absolute', top: '10%', left: '60%', width: 600, height: 600, borderRadius: '50%', background: 'radial-gradient(circle, rgba(37,99,235,.08), transparent 70%)', filter: 'blur(40px)', animation: 'hmFloat 12s ease-in-out infinite' }}></div>
       <div style={{ position: 'absolute', bottom: '5%', left: '10%', width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle, rgba(124,58,237,.06), transparent 70%)', filter: 'blur(40px)', animation: 'hmFloat 15s ease-in-out infinite reverse' }}></div>
 
-      <div style={{
+      <div className="hm-hero-inner" style={{
         maxWidth: 1440, margin: '0 auto', width: '100%',
         display: 'flex', alignItems: 'center', gap: 60,
         position: 'relative', zIndex: 1,
         flexWrap: 'wrap', justifyContent: 'center',
         padding: '0 48px',
       }}>
-        <div style={{ flex: '1 1 480px', maxWidth: 640 }}>
+        <div className="hm-hero-text" style={{ flex: '1 1 480px', maxWidth: 640 }}>
           <FadeIn delay={0.1}>
             <div className="hm-badge" style={{ marginBottom: 18 }}>
               <HMIcon name="sparkles" size={14} />
@@ -152,7 +152,7 @@ const HeroSection = () => {
           </FadeIn>
 
           <FadeIn delay={0.6}>
-            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+            <div className="hm-hero-btns" style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
               <a href="#contact" className="hm-btn-primary">
                 Start Your Project
                 <HMIcon name="arrowRight" size={16} strokeWidth={2.5} />
@@ -164,7 +164,7 @@ const HeroSection = () => {
           </FadeIn>
 
           <FadeIn delay={0.75}>
-            <div style={{ display: 'flex', gap: 36, marginTop: 36, flexWrap: 'wrap' }}>
+            <div className="hm-hero-stats" style={{ display: 'flex', gap: 36, marginTop: 36, flexWrap: 'wrap' }}>
               {[
                 { val: 'Any Vision', label: 'New or Existing' },
                 { val: 'AI-Powered', label: 'At the Core' },
@@ -186,6 +186,32 @@ const HeroSection = () => {
           <AICoreVisual />
         </FadeIn>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .hm-hero-inner {
+            padding: 0 !important;
+            gap: 28px !important;
+          }
+          .hm-ai-core {
+            width: clamp(180px, 65vw, 260px) !important;
+            height: clamp(180px, 65vw, 260px) !important;
+          }
+          .hm-hero-text {
+            text-align: center;
+          }
+          .hm-hero-text .hm-badge {
+            display: inline-flex;
+          }
+          .hm-hero-btns {
+            justify-content: center;
+          }
+          .hm-hero-stats {
+            justify-content: center;
+            gap: 24px !important;
+          }
+        }
+      `}</style>
 
       <FadeIn delay={1} style={{
         position: 'absolute', bottom: 20, left: '50%', transform: 'translateX(-50%)',

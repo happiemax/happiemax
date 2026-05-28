@@ -20,7 +20,10 @@ const ParticleCanvas = () => {
       H = canvas.height = window.innerHeight;
     };
 
-    const COUNT = Math.min(100, Math.floor(window.innerWidth / 16));
+    const isMobile = window.innerWidth < 768;
+    const COUNT = isMobile
+      ? Math.min(20, Math.floor(window.innerWidth / 20))
+      : Math.min(100, Math.floor(window.innerWidth / 16));
     const COLORS = ['#2563EB', '#7C3AED', '#38BDF8', '#6366F1'];
 
     const init = () => {
@@ -40,7 +43,14 @@ const ParticleCanvas = () => {
       particlesRef.current = arr;
     };
 
-    const draw = () => {
+    let lastTime = 0;
+    const FRAME_MS = isMobile ? 1000 / 30 : 0; // 30fps cap on mobile, uncapped on desktop
+
+    const draw = (now) => {
+      raf = requestAnimationFrame(draw);
+      if (isMobile && now - lastTime < FRAME_MS) return;
+      lastTime = now;
+
       ctx.clearRect(0, 0, W, H);
       const pts = particlesRef.current;
       const m = mouseRef.current;
@@ -57,14 +67,16 @@ const ParticleCanvas = () => {
         p.x += p.vx + Math.sin(t + p.phase) * 0.12;
         p.y += p.vy + Math.cos(t + p.phase * 1.3) * 0.08;
 
-        // Mouse repulsion
-        const dx = p.x - m.x;
-        const dy = p.y - m.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 160 && dist > 0) {
-          const force = (160 - dist) / 160 * 0.6;
-          p.vx += (dx / dist) * force;
-          p.vy += (dy / dist) * force;
+        // Mouse repulsion (desktop only)
+        if (!isMobile) {
+          const dx = p.x - m.x;
+          const dy = p.y - m.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 160 && dist > 0) {
+            const force = (160 - dist) / 160 * 0.6;
+            p.vx += (dx / dist) * force;
+            p.vy += (dy / dist) * force;
+          }
         }
 
         // Damping
@@ -84,25 +96,26 @@ const ParticleCanvas = () => {
         ctx.globalAlpha = Math.min(p.alpha * alphaScale, 0.85);
         ctx.fill();
 
-        // Connections (check subset to save perf)
-        for (let j = i + 1; j < pts.length; j++) {
-          const q = pts[j];
-          const cx = p.x - q.x;
-          const cy = p.y - q.y;
-          const cd = cx * cx + cy * cy;
-          if (cd < 12100) { // 110^2 — shorter reach = fewer clustered lines
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = isLight ? (lightColors[p.color] || '#1E3A8A') : p.color;
-            ctx.globalAlpha = Math.min((1 - cd / 12100) * 0.1 * lineAlphaScale, 0.35);
-            ctx.lineWidth = 0.6;
-            ctx.stroke();
+        // Connections — skip on mobile to save CPU
+        if (!isMobile) {
+          for (let j = i + 1; j < pts.length; j++) {
+            const q = pts[j];
+            const cx = p.x - q.x;
+            const cy = p.y - q.y;
+            const cd = cx * cx + cy * cy;
+            if (cd < 12100) { // 110^2
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(q.x, q.y);
+              ctx.strokeStyle = isLight ? (lightColors[p.color] || '#1E3A8A') : p.color;
+              ctx.globalAlpha = Math.min((1 - cd / 12100) * 0.1 * lineAlphaScale, 0.35);
+              ctx.lineWidth = 0.6;
+              ctx.stroke();
+            }
           }
         }
       }
       ctx.globalAlpha = 1;
-      raf = requestAnimationFrame(draw);
     };
 
     const onMove = (e) => {
@@ -114,15 +127,16 @@ const ParticleCanvas = () => {
 
     resize();
     init();
-    draw();
+    raf = requestAnimationFrame(draw);
 
-    window.addEventListener('resize', () => { resize(); init(); });
+    const onResize = () => { resize(); init(); };
+    window.addEventListener('resize', onResize);
     window.addEventListener('mousemove', onMove);
     window.addEventListener('mouseleave', onLeave);
 
     return () => {
       cancelAnimationFrame(raf);
-      window.removeEventListener('resize', resize);
+      window.removeEventListener('resize', onResize);
       window.removeEventListener('mousemove', onMove);
       window.removeEventListener('mouseleave', onLeave);
     };

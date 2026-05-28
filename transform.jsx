@@ -230,7 +230,7 @@ const TransformMatrix = () => {
           marginTop: 20,
           maxWidth: 780,
           margin: '20px auto 0',
-        }}>
+        }} className="hm-transform-grid-2">
           {MATRIX_DATA.slice(3).map((d, i) => (
             <TransformCard key={i + 3} data={d} index={i + 3} />
           ))}
@@ -243,6 +243,7 @@ const TransformMatrix = () => {
         }
         @media (max-width: 580px) {
           .hm-transform-grid { grid-template-columns: 1fr !important; }
+          .hm-transform-grid-2 { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>

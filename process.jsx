@@ -208,14 +208,19 @@ const CTABanner = () => {
             </p>
 
             <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
-              <a href="#contact" className="hm-btn-primary" style={{ fontSize: 16, padding: '16px 40px' }}>
+              <a href="#contact" className="hm-btn-primary hm-cta-btn" style={{ fontSize: 16, padding: '16px 40px' }}>
                 Start Your Project
                 <HMIcon name="arrowRight" size={18} strokeWidth={2.5} />
               </a>
-              <a href="mailto:contacthappiemax@gmail.com" className="hm-btn-secondary" style={{ fontSize: 16, padding: '16px 40px' }}>
+              <a href="mailto:contacthappiemax@gmail.com" className="hm-btn-secondary hm-cta-btn" style={{ fontSize: 16, padding: '16px 40px' }}>
                 contacthappiemax@gmail.com
               </a>
             </div>
+            <style>{`
+              @media (max-width: 600px) {
+                .hm-cta-btn { width: 100%; justify-content: center; font-size: 14px !important; padding: 14px 24px !important; }
+              }
+            `}</style>
           </div>
         </div>
       </div>

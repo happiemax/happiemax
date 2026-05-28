@@ -54,7 +54,7 @@ const FooterSection = () => {
     }}>
       <div
         ref={ref}
-        className={`hm-reveal ${vis ? 'visible' : ''}`}
+        className={`hm-reveal ${vis ? 'visible' : ''} hm-footer-inner`}
         style={{
           maxWidth: 1440, margin: '0 auto',
           padding: '80px 48px 40px',
@@ -169,14 +169,11 @@ const FooterSection = () => {
       {/* Responsive */}
       <style>{`
         @media (max-width: 768px) {
-          .hm-footer-grid {
-            grid-template-columns: 1fr 1fr !important;
-          }
+          .hm-footer-grid { grid-template-columns: 1fr 1fr !important; }
+          .hm-footer-inner { padding: 60px 20px 32px !important; }
         }
         @media (max-width: 480px) {
-          .hm-footer-grid {
-            grid-template-columns: 1fr !important;
-          }
+          .hm-footer-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </footer>

@@ -50,7 +50,7 @@ const Navbar = () => {
           transition: 'all .35s ease',
         }}
       >
-        <div style={{
+        <div className="hm-nav-inner" style={{
           maxWidth: 1440, margin: '0 auto',
           padding: '0 48px',
           height: scrolled ? 64 : 76,
@@ -208,6 +208,7 @@ const Navbar = () => {
         @media (max-width: 768px) {
           .hm-nav-desktop { display: none !important; }
           .hm-nav-mobile-btn { display: block !important; }
+          .hm-nav-inner { padding: 0 20px !important; }
         }
       `}</style>
     </>
