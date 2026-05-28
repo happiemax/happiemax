@@ -87,8 +87,8 @@ const Navbar = () => {
                   borderRadius: 10, transition: 'all .25s',
                 }}
                 onMouseEnter={(e) => {
-                  e.target.style.color = '#F1F5F9';
-                  e.target.style.background = 'rgba(255,255,255,.05)';
+                  e.target.style.color = isLight ? '#0F172A' : '#F1F5F9';
+                  e.target.style.background = isLight ? 'rgba(0,0,0,.05)' : 'rgba(255,255,255,.05)';
                 }}
                 onMouseLeave={(e) => {
                   e.target.style.color = 'var(--hm-text-2)';
