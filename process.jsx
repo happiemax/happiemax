@@ -161,7 +161,7 @@ const CTABanner = () => {
   const [ref, vis] = useScrollReveal();
 
   return (
-    <section style={{ position: 'relative', zIndex: 1 }}>
+    <section id="contact" style={{ position: 'relative', zIndex: 1 }}>
       <div className="hm-section" style={{ paddingBottom: 60 }}>
         <div
           ref={ref}

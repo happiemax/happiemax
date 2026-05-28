@@ -47,7 +47,7 @@ const FooterSection = () => {
   const brandCyan = '#00ACC1';
 
   return (
-    <footer id="contact" style={{
+    <footer id="footer" style={{
       position: 'relative', zIndex: 1,
       background: 'linear-gradient(180deg, var(--hm-bg), #060911)',
       borderTop: '1px solid rgba(255,255,255,.04)',
