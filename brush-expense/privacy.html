@@ -43,6 +43,16 @@
     code { background: #1f1f29; padding: 1px 6px; border-radius: 5px; font-size: 90%; }
     footer { color: var(--muted); font-size: 13px; margin-top: 30px; text-align: center; }
     strong { color: #fff; }
+    .callout {
+      border: 1px solid var(--accent);
+      border-left-width: 4px;
+      background: rgba(255,112,13,0.08);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin: 22px 0 8px;
+    }
+    .callout .title { font-weight: 700; color: var(--accent); margin-bottom: 6px; display: block; }
+    .callout ul { margin: 6px 0 0; }
   </style>
 </head>
 <body>
@@ -63,6 +73,25 @@
         your own Google Drive. This policy explains exactly what data the app
         handles and why.
       </p>
+
+      <div class="callout">
+        <span class="title">How we handle SMS</span>
+        <ul>
+          <li>SMS access is <strong>read-only</strong> and <strong>optional</strong>.
+            It is used only if you turn on SMS expense tracking and grant
+            permission — the app works fully without it. We never send, modify
+            or delete any message.</li>
+          <li>Messages are read and parsed <strong>entirely on your
+            device</strong>. They are <strong>never uploaded</strong> to us or
+            any server — we operate no server.</li>
+          <li>We <strong>do not store your SMS messages</strong>. Only the
+            transaction details you explicitly approve (amount, merchant, date)
+            are saved, and only in the <strong>local database on your
+            device</strong>.</li>
+          <li>You can turn the feature off or revoke the permission at any
+            time.</li>
+        </ul>
+      </div>
 
       <h2>1. Information we handle</h2>
       <ul>
